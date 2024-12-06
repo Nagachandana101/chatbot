@@ -8,10 +8,13 @@ const { scheduleInterview } = require("./InterviewController");
 const convertToTextFormat = (data) => {
   return data
     .map((skill) => {
-      let result = `${skill.skill}:\n`;
-      skill.links.forEach((link, index) => {
-        result += `Link ${index + 1}\n${link}\n`;
+      let result = `${skill.skill}:\n`; // Start with the skill name
+
+      // Loop through each link and directly add it without the "Link X" label
+      skill.links.forEach((link) => {
+        result += `${link}\n`; // Simply add the link itself
       });
+
       return result.trim(); // Remove the last newline
     })
     .join("\n\n"); // Separate skills with two newlines
